@@ -56,7 +56,13 @@ art-studio/
 │   ├── 02_DIRECTOR_RELATIONSHIP.md
 │   ├── 03_PROJECT_STRUCTURE.md
 │   ├── 04_ART_DIRECTION_SYSTEM.md
-│   └── 05_TOOL_ROLES.md
+│   ├── 05_TOOL_ROLES.md
+│   ├── 06_ASSET_LIFECYCLE.md
+│   ├── 07_GENERATION_WORKFLOW.md
+│   ├── 08_REVIEW_AND_APPROVAL.md
+│   ├── 09_ASSET_SPEC_AND_VALIDATION.md
+│   ├── 10_ENGINE_HANDOFF.md
+│   └── 11_LEARNING_AND_REUSE.md
 │
 ├── studio/
 │   ├── tools/
@@ -66,7 +72,11 @@ art-studio/
 │
 ├── templates/
 │   ├── PROJECT_BRIEF.md
-│   └── ART_DIRECTION.md
+│   ├── ART_DIRECTION.md
+│   ├── STYLE_SPEC.md
+│   ├── ASSET_MANIFEST.md
+│   ├── ASSET_BRIEF.md
+│   └── REVIEW_LOG.md
 │
 └── projects/
 ```
@@ -74,7 +84,7 @@ art-studio/
 이 문서는 **구조 원칙**을 정의하는 것이지 폴더 생성을 지시하는 것이 아니다.
 아직 내용이 없는 폴더를 미리 다 만들어 둘 필요는 없다. 실제로 무언가를 넣을 때 만든다.
 
-위 목록에 적힌 `04`, `05` 역시 예정된 자리이지 이미 존재하는 문서가 아니다.
+`docs/`와 `templates/`의 문서는 현재 모두 존재한다. `studio/` 아래의 하위 폴더와 `projects/`의 내용은 실제 작업이 생길 때 만든다.
 
 ---
 
@@ -84,15 +94,20 @@ art-studio/
 
 여기에는 특정 게임의 아트 방향이 들어가지 않는다. `docs/` 아래의 어떤 문장도 "어느 게임에서만 참인 규칙"이어서는 안 된다.
 
-앞으로 다음과 같은 공통 운영 문서가 추가될 수 있다.
+현재 다음 운영 문서가 이 영역에 있다.
 
 ```text
-Asset Lifecycle
-Generation Workflow
-Review & Approval
-Asset Specification & Validation
-Engine Handoff
-Learning & Reuse
+01_STUDIO_IDENTITY          이 저장소는 무엇인가
+02_DIRECTOR_RELATIONSHIP    누가 무엇을 결정하는가
+03_PROJECT_STRUCTURE        파일 위에서 어떻게 분리하는가
+04_ART_DIRECTION_SYSTEM     아트 방향을 어떤 언어로 이해하는가
+05_TOOL_ROLES               어떤 도구를 어떤 문제에 쓰는가
+06_ASSET_LIFECYCLE          이 결과물은 지금 어떤 상태인가
+07_GENERATION_WORKFLOW      실제 제작은 어떤 순서로 진행하는가
+08_REVIEW_AND_APPROVAL      무엇을 검토하고 누가 승인하는가
+09_ASSET_SPEC_AND_VALIDATION  기술 규격을 어떻게 검사하는가
+10_ENGINE_HANDOFF           승인 자산을 게임으로 어떻게 전달하고 확인하는가
+11_LEARNING_AND_REUSE       무엇을 공통 지식으로 남기는가
 ```
 
 게임별 문서는 `docs/`가 아니라 해당 프로젝트의 `brief/`에 둔다.
@@ -136,7 +151,7 @@ studio/
 
 > Unity · Godot · Roblox · Web
 
-엔진별 전달 규칙 자체는 이후 Engine Handoff 문서에서 정의한다. 여기에는 그 규칙을 실행하는 수단만 둔다.
+엔진별 전달 규칙 자체는 `10_ENGINE_HANDOFF.md`가 정의한다. 여기에는 그 규칙을 실행하는 수단만 둔다.
 
 ### `studio/shared/`
 
@@ -155,21 +170,16 @@ studio/
 
 ```text
 templates/
-├── PROJECT_BRIEF.md
-└── ART_DIRECTION.md
-```
-
-이후 필요에 따라 추가될 수 있다.
-
-```text
-STYLE_SPEC.md
-ASSET_MANIFEST.md
-ASSET_BRIEF.md
-REVIEW_LOG.md
+├── PROJECT_BRIEF.md      이 게임은 무엇인가
+├── ART_DIRECTION.md      이 게임은 어떻게 보여야 하는가
+├── STYLE_SPEC.md         반복 제작을 위한 기술 규칙
+├── ASSET_MANIFEST.md     무엇이 필요하고 지금 어디까지 왔는가
+├── ASSET_BRIEF.md        이번 자산을 어떻게 만드는가
+└── REVIEW_LOG.md         무엇을 왜 채택·반려했는가
 ```
 
 템플릿은 실제 게임 데이터를 담지 않는다. 예시 값을 적더라도 그것이 다음 프로젝트의 기본값으로 굳지 않도록 한다.
-템플릿의 항목 구성은 `04_ART_DIRECTION_SYSTEM`에서 정의될 수 있다. 이 문서는 **템플릿이 놓이는 자리**만 정한다.
+각 템플릿의 항목 구성은 템플릿 파일 자체가 가지고 있고, 무엇이 어느 문서에 속하는가는 `04_ART_DIRECTION_SYSTEM.md`가 정의한다. 이 문서는 **템플릿이 놓이는 자리**만 정한다.
 
 ---
 
@@ -224,7 +234,7 @@ brief/
 └── ART_DIRECTION.md
 ```
 
-이후 `STYLE_SPEC.md`, `ASSET_MANIFEST.md` 등도 이 영역에 놓인다.
+`STYLE_SPEC.md`, `ASSET_MANIFEST.md`, 자산별 `ASSET_BRIEF_<asset>.md`도 이 영역에 놓인다. 프로젝트에 필요해진 시점에 템플릿을 복제해 만든다.
 
 이 폴더의 목적은 하나다.
 
@@ -291,7 +301,7 @@ candidates/
 
 승인된 고해상도 원본에서 Unity용 PNG, Roblox용 텍스처, sprite atlas가 각각 파생될 수 있다. 승인된 것은 원본이지 특정 엔진용 파일이 아니다.
 
-승인 상태의 변경은 디렉터의 권한이며, 그 절차는 Review & Approval 문서에서 정의한다.
+승인 상태의 변경은 디렉터의 권한이며, 그 절차는 `08_REVIEW_AND_APPROVAL.md`가 정의한다. 상태 자체의 의미는 `06_ASSET_LIFECYCLE.md`가 정의한다.
 
 ---
 
@@ -323,7 +333,7 @@ exports/
 리뷰 자료는 대체로 파생물이며, 판단을 돕기 위한 임시 자료일 수도 있다.
 다만 **중요한 결정의 근거가 된 자료**는 임시물로 취급하지 않는다.
 
-기록 형식과 결정 로그의 규칙은 `REVIEW_LOG` 및 관련 문서에서 정의한다.
+검토와 승인의 판단 기준은 `08_REVIEW_AND_APPROVAL.md`가, 기록 형식은 `templates/REVIEW_LOG.md`가 정의한다.
 
 ---
 
@@ -379,7 +389,7 @@ Art Studio 작업 공간   art-studio/projects/age-rush/
 둘 사이에 연결이나 export 절차를 만들 수 있다.
 다만 **Art Studio가 게임 저장소 전체를 복제하거나 흡수하는 구조를 기본값으로 삼지 않는다.**
 
-`09` 항목(CLAUDE.md)에서 정한 대로, 게임 저장소 쪽 파일을 다루는 작업은 아트 작업이라는 이유만으로 확대되지 않는다.
+`CLAUDE.md`의 「외부 게임 프로젝트를 다룰 때」에서 정한 대로, 게임 저장소 쪽 파일을 다루는 작업은 아트 작업이라는 이유만으로 확대되지 않는다. 실제 전달 절차는 `10_ENGINE_HANDOFF.md`가 다룬다.
 
 ---
 
@@ -485,7 +495,7 @@ retro-diffusion/
 게임 → 자산 → 상태
 ```
 
-어떤 도구로 만들었는지는 metadata나 기록으로 남긴다. 그 형식은 이후 문서에서 정의한다.
+어떤 도구로 만들었는지는 metadata나 기록으로 남긴다. 무엇을 어느 수준까지 남길지는 `07_GENERATION_WORKFLOW.md`가, 중요한 결정의 기록 형식은 `templates/REVIEW_LOG.md`가 다룬다.
 
 ---
 
@@ -590,17 +600,17 @@ AI 기반 작업은 임시 결과물을 많이 만든다. 그렇다고 오래된
 
 ## 29. 이 문서가 다루지 않는 것
 
-- 아트 방향을 어떤 속성으로 정의하는가
-- 어떤 도구를 어떤 작업에 쓰는가
-- candidate가 approved가 되는 정확한 절차
-- asset lifecycle의 상태 정의
-- 이미지 생성 workflow
-- 리뷰 및 승인 규칙
-- 기술 검증 규칙
-- 엔진별 export 규격
-- 프로젝트 경험을 공통 노하우로 승격하는 세부 기준
-- manifest 형식
-- asset naming의 세부 규칙
+```text
+아트 방향을 어떤 속성으로 정의하는가            04_ART_DIRECTION_SYSTEM.md
+어떤 도구를 어떤 작업에 쓰는가                  05_TOOL_ROLES.md
+asset lifecycle의 상태 정의                    06_ASSET_LIFECYCLE.md
+이미지 생성 workflow                          07_GENERATION_WORKFLOW.md
+candidate가 approved가 되는 절차 · 리뷰와 승인 규칙   08_REVIEW_AND_APPROVAL.md
+기술 검증 규칙 · asset naming의 세부 규칙        09_ASSET_SPEC_AND_VALIDATION.md
+엔진별 export 규격                            10_ENGINE_HANDOFF.md
+프로젝트 경험을 공통 노하우로 승격하는 세부 기준   11_LEARNING_AND_REUSE.md
+manifest 형식                                templates/ASSET_MANIFEST.md
+```
 
 이 문서는 **구조적 경계**만 정의한다.
 

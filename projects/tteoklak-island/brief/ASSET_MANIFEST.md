@@ -32,15 +32,20 @@
 
 | scene_id | 이름 | 주문서 | 상태 |
 |---|---|---|---|
-| `bull_harbor_entrance` | 황소항 입구 | 01 | **후보 1장** |
-| `subway_night` | 심야 지하철 | 05 | **후보 1장** |
+| `bull_harbor_entrance` | 황소항 입구 | 01 | **후보 1장 · 화면 통합됨** |
+| `subway_night` | 심야 지하철 | 05 | **후보 1장 · 화면 통합됨** |
 | `office_meeting_room` | 회의실 | 02 | — |
 | `office_corridor` | 복도 | 03 | — |
 | `office_pantry` | 탕비실 | 04 | — |
 | `studio_room` | 한개미의 원룸 | 06 | — |
 
 > 둘 다 **한 장씩만** 뽑혀 고를 것이 없다. 3~4장으로 다시 받는다.
-> 그리고 **세로 셸 전에는 게임에 넣을 수 없다** (전략 §3).
+>
+> **2026-08-17 개정 — 「세로 셸 전에는 게임에 넣을 수 없다」는 해소됐다.**
+> 셸이 구현되어 두 장 다 화면에 올라갔고 핫스폿까지 맞았다
+> ([`../reviews/2026-08-17_portrait-shell/STUDIO_VERDICT.md`](../reviews/2026-08-17_portrait-shell/STUDIO_VERDICT.md) ·
+> [`../reviews/2026-08-17_subway-integration/README.md`](../reviews/2026-08-17_subway-integration/README.md)).
+> **후보 상태는 그대로다** — 화면에 올라간 것이 채택은 아니다 (`06_ASSET_LIFECYCLE.md`).
 
 ## 4. 캐릭터 스프라이트 — 5명
 

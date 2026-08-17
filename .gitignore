@@ -1,0 +1,14 @@
+# 에디터 · OS
+.vscode/
+.DS_Store
+
+# 이미지 자산은 아직 저장소에 넣지 않는다.
+# reference · candidate · review 이미지는 용량이 크고 수가 빠르게 늘어난다.
+# 저장이 필요해지면 Git LFS를 설정한 뒤 이 규칙을 조정한다.
+projects/**/*.png
+projects/**/*.jpg
+projects/**/*.jpeg
+projects/**/*.webp
+projects/**/*.gif
+projects/**/*.psd
+projects/**/*.tga

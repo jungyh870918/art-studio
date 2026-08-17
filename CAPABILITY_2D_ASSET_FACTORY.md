@@ -1,7 +1,10 @@
 # 제작 능력 등록 — 2D Art Factory (`2d-assets`)
 
-작성일: 2026-08-17
+작성일: 2026-08-17 · **관측 갱신: 2026-08-17 22:10** (`2d-assets` `65a9daf` 까지)
 대상 저장소: `~/Desktop/Projects/2d-assets`
+
+> **§2 · §8 · §9 · §10 은 「그때 관측한 것」이다.** 하루 사이에 양쪽이 다 움직였으므로
+> 갱신한 자리를 각 절에 표시해 두었다. **판단(§3~§7 · §11 · §13)은 바뀌지 않았다.**
 
 > **이 문서의 위치.** `STUDIO_USAGE_CONTEXT.md`와 같은 성격의 **얇은 보조 문서**다.
 > 새 governance도, 새 lifecycle도, 새 승인 단계도 정의하지 않는다.
@@ -23,13 +26,16 @@
 
 두 저장소는 서로의 존재를 모른 채 만들어졌고, **겹치지 않는다.** 겹치기는커녕 정확히 반대쪽 절반이다.
 
+> **2026-08-17 22:10 갱신 — 이 표의 「코드 없음 / 자산 없음」 칸은 하루 만에 낡았다.**
+
 | | `art-studio` | `2d-assets` |
 |---|---|---|
 | 실체 | 문서 18개 (`CLAUDE.md` + `docs/01`~`11` + `templates/` 6) | 동작하는 Python 파이프라인 + 실제 산출물 |
-| 코드 | **없다** (`studio/`·`projects/` 둘 다 아직 만들어지지 않음) | `tools/ap2d/` 14모듈 + 팩 adapter · 테스트 167 · Unity C# 9종 + PlayMode 테스트 |
-| 자산 | 없다 | 원본 PNG 2,141장 (LPC · CC0 · LimeZu · HD Survivor) |
+| 코드 | ~~없다~~ → **생겼다.** `studio/tools/contact_sheet.py` 1종 + 프로젝트 전용 도구 5종(`dice-dominion/tools/`) | `tools/ap2d/` 14모듈 + 팩 adapter · **테스트 200** · Unity C# 10종 + PlayMode 테스트 |
+| 자산 | ~~없다~~ → **후보만 있다.** 배경 2 · 패널 부품 3벌. **승인 0** | 원본 PNG 2,141장 (LPC · CC0 · LimeZu · HD Survivor) |
+| 입출력 | 프로젝트 3개 등록(`three-kingdoms` · `dice-dominion` · `tteoklak-island`) | **발주 입구** `02_CATALOG/CAPABILITIES.md` · **회신 출구** `order_brief.py` (2026-08-17 추가) |
 | 잘하는 것 | 판단의 경계 · 상태의 의미 · 스타일 격리 · 학습 승격 기준 | 결정적 조합 · 팔레트 · 검증 · Unity 배선 |
-| 못하는 것 | **아직 아무것도 만들지 못한다** | **결정하지 못한다.** 「골랐다」를 담을 자리가 없다 |
+| 못하는 것 | **스스로 그림을 만들지 못한다** — 생성기 연결이 아직 없다 | **결정하지 못한다.** 「골랐다」를 담을 자리가 없다 (그쪽 README 가 스스로 그렇게 적었다) |
 
 `2d-assets`는 사실상 `03_PROJECT_STRUCTURE.md` §5가 말한 `studio/tools/` · `studio/exporters/` ·
 `studio/workflows/`를 **이미 상당 부분 구현해 놓은 것**이다. 다만 그것을 모른 채,
@@ -196,11 +202,12 @@ EXPORT            =  PNG · 시트 · 프리팹              (언제든 재생�
 
 | # | 빈 것 | 증거 | 승격 후보 | 시점 |
 |---|---|---|---|---|
-| 1 | **승인이 착지할 자리** | Factory에 `picks`/`approved` 개념 없음 | `art-studio`의 `approved/` + `REVIEW_LOG` | **지금** |
+| 1 | **승인이 착지할 자리** | Factory에 `picks`/`approved` 개념 없음 — **2026-08-17 그쪽 README 가 「판정하지 않는 것」 절로 그 부재를 명시했다** | `art-studio`의 `approved/` + `REVIEW_LOG` | **지금** |
 | 2 | **정확한 램프 스왑** | `ap2d/palette.py`는 multiply tint뿐. LPC 규칙이 「ramp recolor 엔진을 만들지 않았다」고 명시 | `dice_board`의 `swapPalette`/`rampMapping` (이미 있음) | 내 파츠 시작 시 |
 | 3 | **「진짜 도트인가」 검사** | Factory에 없음. 지금은 불필요 — LPC는 이미 도트다 | `dice_board`의 `art:pixel` 4종 + `checkDiamondTile` | **생성기를 붙이는 순간** |
 | 4 | **생성기 연결** | `tools/` 전체에 네트워크 코드 0줄 (의도된 것 — 라이선스) | own-parts 계층에만 붙인다 | 계층이 생긴 뒤 |
-| 5 | **Studio 코드 자리** | `art-studio/studio/`·`projects/` 둘 다 없음 | `2d-assets`를 «외부 studio 능력»으로 등록해 대신한다 | 지금 |
+| ~~5~~ | ~~**Studio 코드 자리**~~ | **해소 시작.** `studio/tools/contact_sheet.py` 와 프로젝트 3개가 생겼다 | — | ✅ 2026-08-17 |
+| **6** | **생성기 연결 — Studio 쪽** | `three-kingdoms` 가 `providers.js` 로 이미 붙였고, `tteoklak-island` 는 붙어 있지 않아 **사람 손을 기다린다** | `REQUEST_TO_DIRECTOR.md` §7-4 의 「절반만 흡수」 | **디렉터 승인 대기** |
 
 ②와 ③이 특히 값진 발견이다 — **두 저장소가 같은 필요를 각각 따로 만났다.**
 `dice_board`는 도트 팔레트 스왑과 도트 판정을 이미 만들었고, Factory는 그 둘이 없다.
@@ -217,13 +224,17 @@ EXPORT            =  PNG · 시트 · 프리팹              (언제든 재생�
 
 | 게임 | 필요한 것 | LPC/CC0로 되는가 |
 |---|---|---|
-| `dice_board` | 쿼터뷰 48×64 미니어처 · 다이아몬드 타일 · HD-2D | ✗ 아이소메트릭 보드 말이다 |
-| `three-kingdoms` | 95×110 인물 초상 181명 | ✗ 초상은 modular 캐릭터가 아니다 |
-| `secret-of-falling-island` | 일러스트 배경 | ✗ 도트가 아니다 |
+| `dice_board` | ~~쿼터뷰 미니어처 · 다이아몬드 타일 · HD-2D~~ → **정밀 렌더 일러스트 · 아이보리 UI 프레임 · Unity 3D 링 위 평면 타일** (2026-08-17 화풍 확정. **도트 방향 철회**) | ✗ **더 멀어졌다** |
+| `three-kingdoms` | 95×110 인물 초상 181명 (그중 22명은 원화 → 도트로 이미 나왔다) | ✗ 초상은 modular 캐릭터가 아니다 |
+| `secret-of-falling-island` | 일러스트 배경 · 회화체 초상 189×189 | ✗ 도트가 아니다 |
 
 → **세 게임에 대한 Factory의 값어치는 «팩»이 아니라 «기계»다.** §5의 계약대로 파츠를 먹여야 돈다.
 
-그리고 그 파츠가 아직 없다. `dice_board`는 스스로 「도착한 그림 0 — 아트 바이블이 병목」이라고 적어 뒀다.
+그리고 그 파츠가 아직 없다.
+
+> **2026-08-17 갱신 — `dice_board` 의 「아트 바이블이 병목」은 풀렸다.** 화풍·톤·엔진이 확정됐고
+> 그쪽은 「우리가 art-studio 에 막고 있는 것은 없다」고 적었다. **병목이 Studio 쪽으로 옮겨왔다** —
+> C1 발주서 v2. 병목의 성질은 그대로다: **정체성 자산 한 벌이 아직 없다.**
 
 > **Factory는 지금 병목(정체성 자산이 없다)을 풀지 못한다.
 > 그다음 병목(양산·변형·엔진 배선)을 미리 풀어 둔 것이다.**
@@ -240,10 +251,14 @@ EXPORT            =  PNG · 시트 · 프리팹              (언제든 재생�
 
 ### Slice 0 — 새 그림 0장으로 지금 할 수 있는 것
 
-1. **두 저장소가 서로를 알게 한다** — 이 문서 + `2d-assets/00_DOCS/DIRECTOR_CONTEXT.md`
-2. **`art-studio/projects/<game>/`을 하나 만든다** — `PROJECT_BRIEF` + `ART_DIRECTION`부터
-   (`03` §26. 이 둘이 없으면 이후 후보가 전부 근거 없이 만들어진다)
-3. **own-parts 계층을 합성 파츠로 뚫어 본다** — `01_SOURCE`가 아닌 별도 계층에
+> **2026-08-17 22:10 — 1·2 는 끝났고 3 이 남았다.**
+
+1. ✅ **두 저장소가 서로를 알게 한다** — 이 문서 + `2d-assets/00_DOCS/DIRECTOR_CONTEXT.md`.
+   그쪽이 발주 입구(`CAPABILITIES.md`)와 회신 출구(`order_brief.py`)까지 열어 두었다
+2. ✅ **`art-studio/projects/<game>/`을 하나 만든다** — 셋을 만들었다
+   (`three-kingdoms` · `dice-dominion` · `tteoklak-island`). 다만 **`ART_DIRECTION` 이
+   `dice-dominion` 에는 없다** — 그 프로젝트는 게임 저장소가 정본을 갖는다고 등록했다
+3. ⬜ **own-parts 계층을 합성 파츠로 뚫어 본다** — `01_SOURCE`가 아닌 별도 계층에
    규격에 맞는 가짜 파츠 한 벌을 넣고 scan → rule → generate → contact sheet → Unity export까지 돌린다.
    **여기서 ②(램프 스왑 없음)가 반드시 걸린다. 걸리는 것이 이 슬라이스의 목적이다.**
    → 통과시킨 뒤 **합성 파츠는 반드시 지운다.** 진짜 자산으로 오인되면 그때부터 리포트를 믿을 수 없다

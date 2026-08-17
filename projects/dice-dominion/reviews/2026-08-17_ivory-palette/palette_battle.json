@@ -1,0 +1,16 @@
+{
+  "bg.far": "#b3becd",
+  "bg.mid": "#8b9eba",
+  "bg.ground": "#bbc1cd",
+  "panel.bg": "#e4ddd8",
+  "panel.bg2": "#e1dad2",
+  "panel.header": "#675955",
+  "panel.row": "#dfd3c4",
+  "text.ink": "#44423d",
+  "gold.trim": "#d1c6b7",
+  "gold.deep": "#54402e",
+  "dice.face": "#f0ece8",
+  "accent.blue": "#334981",
+  "house.purple": "#695794",
+  "house.blue": "#416491"
+}
